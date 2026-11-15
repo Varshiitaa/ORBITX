@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: #070913;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #070913;
+  color: #e2e8f0;
+  font-family: 'Space Grotesk', 'Source Sans 3', 'Segoe UI', sans-serif;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: Outfit, 'Segoe UI', sans-serif;
+}
+
+::selection {
+  background: #00f0ff;
+  color: #070913;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0e18;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+:focus-visible {
+  outline: 2px solid #9fd0ff;
+  outline-offset: 3px;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@layer components {
+  .panel {
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 240, 255, 0.16);
+    background: rgba(14, 19, 34, 0.78);
+    box-shadow: 0 8px 32px -12px rgba(0, 240, 255, 0.18);
+    backdrop-filter: blur(16px);
+  }
+
+  .kicker {
+    @apply font-mono text-[11px] uppercase tracking-[0.16em] text-accent;
+  }
+
+  .hud-card {
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 240, 255, 0.22);
+    background: rgba(14, 19, 34, 0.86);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .hud-card:hover {
+    border-color: rgba(0, 240, 255, 0.7);
+    box-shadow: 0 0 24px rgba(0, 240, 255, 0.12);
+  }
+
+  .bg-space-grid {
+    background-size: 42px 42px;
+    background-image:
+      linear-gradient(to right, rgba(0, 240, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 240, 255, 0.035) 1px, transparent 1px);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 14px rgba(0, 240, 255, 0.55);
+  }
+
+  .nav-pill {
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: #cbd5e1;
+    white-space: nowrap;
+  }
+
+  .nav-pill[aria-current='page'] {
+    background: #00f0ff;
+    color: #070913;
+    font-weight: 700;
+    box-shadow: 0 0 18px rgba(0, 240, 255, 0.45);
+  }
+
+  .num {
+    @apply font-mono tabular-nums text-ink;
+  }
+}
+
+.app-wash {
+  background: transparent;
+}
+
+@keyframes radarSweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbitSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes scanline {
+  0% { top: 0%; opacity: 0.15; }
+  100% { top: 96%; opacity: 0.85; }
+}
+
+.radar-beam {
+  animation: radarSweep 4.5s linear infinite;
+  transform-origin: center;
+}
+
+.orbit-spin {
+  position: absolute;
+  animation: orbitSpin 48s linear infinite;
+}
+
+.orbit-spin::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #00f0ff;
+  box-shadow: 0 0 12px #00f0ff;
+}
+
+.cad-scanline {
+  animation: scanline 2.8s ease-in-out infinite alternate;
+}

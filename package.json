@@ -1,0 +1,20 @@
+{
+  "name": "orbitx",
+  "private": true,
+  "version": "1.0.0",
+  "description": "ORBITX — educational space mission design and simulation game",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,cyan \"npm run dev -w orbitx-server\" \"npm run dev -w orbitx-client\"",
+    "build": "npm run build -w orbitx-client",
+    "test": "npm run test -w orbitx-client",
+    "typecheck": "npm run typecheck -w orbitx-client",
+    "start": "npm run start -w orbitx-server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
